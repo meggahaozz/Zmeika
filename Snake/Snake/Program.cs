@@ -21,7 +21,7 @@ namespace Snake
             leftLine.Draw();
             rightLine.Draw();
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 }
