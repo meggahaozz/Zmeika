@@ -10,7 +10,7 @@ namespace Snake
     {
         int x;
         int y;
-        char sym;
+        public char sym;
 
         public CPoint(int x, int y, char sym)
         {
@@ -63,6 +63,12 @@ namespace Snake
         {
             Console.SetCursorPosition(x, y);
             Console.Write(sym);
+        }
+
+
+        internal bool IsHit(CPoint p)
+        {
+            return this.x == p.x && this.y == p.y;
         }
 
         public override string ToString()
