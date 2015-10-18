@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Snake
@@ -11,7 +12,7 @@ namespace Snake
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);
-
+            //отрисовка рамки
             Figure upLine = new HorizontalLine(0, 78, 0, '+');
             Figure downLine = new HorizontalLine(0, 78, 24, '+');
             Figure leftLine = new VerticalLine(0, 24, 0, '+');
@@ -21,11 +22,22 @@ namespace Snake
             leftLine.Draw();
             rightLine.Draw();
 
-
+            //отрисовка змейки
             CPoint p = new CPoint(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-            snake.Move();
+
+            //цикл игры
+            while (true)
+            {
+                if (Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo key = Console.ReadKey();
+                    snake.HandleKey(key.Key);
+                }
+                Thread.Sleep(100);
+                snake.Move();
+            }
             //Console.ReadKey();
         }
     }
