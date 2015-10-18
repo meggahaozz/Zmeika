@@ -22,8 +22,8 @@ namespace Snake
 
         public CPoint CreateFood()
         {
-            int x = r.Next(2, mapWidth - 2);
-            int y = r.Next(2, mapHeight - 2);
+            int x = r.Next(3, mapWidth - 3);
+            int y = r.Next(3, mapHeight - 3);
             return new CPoint(x, y, sym);
         }
     }

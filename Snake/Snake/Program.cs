@@ -12,15 +12,8 @@ namespace Snake
         static void Main(string[] args)
         {
             Console.SetBufferSize(80, 25);
-            //отрисовка рамки
-            Figure upLine = new HorizontalLine(0, 78, 0, '+');
-            Figure downLine = new HorizontalLine(0, 78, 24, '+');
-            Figure leftLine = new VerticalLine(0, 24, 0, '+');
-            Figure rightLine = new VerticalLine(0, 24, 78, '+');
-            upLine.Draw();
-            downLine.Draw();
-            leftLine.Draw();
-            rightLine.Draw();
+            Walls walls = new Walls(80, 25);
+            walls.Draw();
 
             //отрисовка змейки
             CPoint p = new CPoint(4, 5, '*');
@@ -35,6 +28,11 @@ namespace Snake
             //цикл игры
             while (true)
             {
+                if (walls.IsHit(snake) || snake.IsHitTail())
+                {
+                    break;
+                }
+
                 if (snake.Eat(food))
                 {
                     food = foodCreator.CreateFood();
