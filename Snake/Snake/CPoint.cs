@@ -42,15 +42,21 @@ namespace Snake
                     }
                 case Direction.UP:
                     {
-                        y -= offset;
+                        y += offset;
                         break;
                     }
                 case Direction.DOWN:
                     {
-                        y += offset;
+                        y -= offset;
                         break;
                     }
             }
+        }
+
+        public void Clear()
+        {
+            sym = ' ';
+            Draw();
         }
 
         public void Draw()
